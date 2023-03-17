@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import UserRepositories from "./components/UserRepositories";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css' 
+import { gsap } from "gsap";
+import HeaderAnimation from "./components/HeaderAnimation";
 
 function App() {
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <body>
+      <header>
+      <HeaderAnimation/>
       </header>
-    </div>
-  );
+
+      <UserRepositories username="hunterstorm" />
+    </body>
+  )
 }
 
 export default App;
