@@ -11,6 +11,7 @@ function UsernameInput() {
   function onSubmit(event) {
     event.preventDefault();
     dispatch(getUsername({ username }));
+    
   }
 
   function onInputChange(event) {

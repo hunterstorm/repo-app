@@ -9,58 +9,60 @@ import Card from "react-bootstrap/Card";
 
 
 const UserRepositories = ({ username }) => {
-  const [repositories, setRepositories] = useState([])  
+  const [repositories, setRepositories] = useState([])
+
   useEffect(() => {
-    if (username) {
+    
       fetch(`https://api.github.com/users/${username}/repos`)
         .then((response) => response.json())
-        .then((data) => setRepositories(data));
-    }
+      
+        .then((data) => {
+          setRepositories(data);
+        })
+    
   }, [username]);
-  console.log();
   
-  
-  if (repositories.message=== 'Not Found'){
-  return
-  }else{
+  if (repositories.length === undefined) {
+    return 
+  } else {
 
-  return (
-    <div className="parentDiv">
-      <h1>{username}'s Repositories</h1>
-      <div className="repo-card">
-        <Row xs={1} sm={2} md={3}>
-          {Array.isArray(repositories) && repositories.map((repository) => (
-            <Col className="container" key={repository.id}>
-              <Card style={{ width: '18rem',height:'18rem' }} className="repo-card">
-                <Card.Body className="repo-card-content">
-                  <Card.Title >
-                    <a  className="repo-title" 
-                        id="repoTitle"
-                        style={{padding:2}}
-                        href={repository.html_url}
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                      {repository.name}
-                    </a>
-                  </Card.Title>
-                  <Card.Text>
-                    <strong>Language:</strong> {repository.language}
-                  </Card.Text>
-                  <Card.Text>
-                    <strong>Stars:</strong> {repository.stargazers_count}
-                  </Card.Text>
-                  <RepositoryDetails repository={repository} />
-                  
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+    return (
+      <div className="parentDiv">
+        <h1>{username}'s Repositories</h1>
+        <div className="repo-card">
+          <Row xs={1} sm={2} md={3}>
+            {Array.isArray(repositories) && repositories.map((repository) => (
+              <Col className="container" key={repository.id}>
+                <Card style={{ width: '17rem',height:'17rem' }} className="repo-card">
+                  <Card.Body className="repo-card-content">
+                    <Card.Title >
+                      <a  className="repo-title" 
+                          id="repoTitle"
+                          style={{padding:2}}
+                          href={repository.html_url}
+                          target="_blank"
+                          rel="noreferrer"
+                      >
+                        {repository.name}
+                      </a>
+                    </Card.Title>
+                    <Card.Text>
+                      <strong>Language:</strong> {repository.language}
+                    </Card.Text>
+                    <Card.Text>
+                      <strong>Stars:</strong> {repository.stargazers_count}
+                    </Card.Text>
+                    <RepositoryDetails repository={repository} />
+                    
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 };
 
 export default UserRepositories;

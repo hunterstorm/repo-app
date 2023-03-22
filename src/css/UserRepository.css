@@ -8,7 +8,15 @@
     border-radius:5px;
     display:flex;
     flex-direction: column;
-    align-self: center;
+    margin:20px;
+    box-shadow: 0px 5px 9px #414c6d;
+
+  
+}
+.container{
+  display:flex;
+  justify-content: center;
+  margin:50px;
 }
 
 .repo-card {
@@ -18,10 +26,6 @@
     box-shadow: 3px 5px 9px #414c6d;
     border-radius: 5px;
     background-color: #0f1c3f;
-   
-  
-
-  
   }
   
   .repo-card-content {
