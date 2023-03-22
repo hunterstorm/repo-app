@@ -29,3 +29,15 @@ header {
   margin: 50px;
 }
 
+.usernameForm{
+  background-color:#0f1c3f;
+  border-radius: 5px;
+  margin: auto;
+  margin-bottom:50px;
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+ 
+}
+
+
