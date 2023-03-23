@@ -9,22 +9,21 @@ import Card from "react-bootstrap/Card";
 
 
 const UserRepositories = ({ username }) => {
-  const [repositories, setRepositories] = useState([])
-console.log(username)
+const [repositories, setRepositories] = useState([])
 useEffect(() => {
   if (username.length!=0){
-      fetch(`https://api.github.com/users/${username}/repos`)
+      fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
         .then((response) => response.json())
         .then((data) => {
           setRepositories(data);
-          console.log("api ran")
+          console.log(data)
         }) 
-      }
-      }, [username]);
+  }
+}, [username]);
     
-    if (username.length===0){
-      return
-    }else{
+  if (username.length===0){
+    return
+  }else{
     return (
       <div className="parentDiv">
         <h1>{username}'s Repositories</h1>
@@ -51,8 +50,7 @@ useEffect(() => {
                     <Card.Text>
                       <strong>Stars:</strong> {repository.stargazers_count}
                     </Card.Text>
-                    <RepositoryDetails repository={repository} />
-                    
+                    <RepositoryDetails repository={repository} />  
                   </Card.Body>
                 </Card>
               </Col>

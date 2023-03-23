@@ -10,14 +10,14 @@ function App() {
     const getUserName = useSelector((state) => state.username.username);
  
     return (
-      <body>
+      <div>
         <header>
           <HeaderAnimation />
         </header>
         <UsernameInput />
         <UserRepositories username={getUserName} />
         
-      </body>
+      </div>
     );
   
 }
