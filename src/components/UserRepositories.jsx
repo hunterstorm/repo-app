@@ -10,22 +10,21 @@ import Card from "react-bootstrap/Card";
 
 const UserRepositories = ({ username }) => {
   const [repositories, setRepositories] = useState([])
-
-  useEffect(() => {
-    
+console.log(username)
+useEffect(() => {
+  if (username.length!=0){
       fetch(`https://api.github.com/users/${username}/repos`)
         .then((response) => response.json())
-      
         .then((data) => {
           setRepositories(data);
-        })
+          console.log("api ran")
+        }) 
+      }
+      }, [username]);
     
-  }, [username]);
-  
-  if (repositories.length === undefined) {
-    return 
-  } else {
-
+    if (username.length===0){
+      return
+    }else{
     return (
       <div className="parentDiv">
         <h1>{username}'s Repositories</h1>
@@ -61,7 +60,7 @@ const UserRepositories = ({ username }) => {
           </Row>
         </div>
       </div>
-    );
+    );       
   }
 };
 
