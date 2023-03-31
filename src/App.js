@@ -5,19 +5,29 @@ import './App.css'
 import HeaderAnimation from "./components/HeaderAnimation";
 import UsernameInput from './components/UsernameInput';
 import { useSelector } from 'react-redux';
+import { BrowserRouter, Routes, Route}   from 'react-router-dom'; 
+import Navigation from './components/Navigation';
+import Home from './components/Home';
 
 function App() {
     const getUserName = useSelector((state) => state.username.username);
- 
     return (
-      <div>
+      <BrowserRouter>
         <header>
-          <HeaderAnimation />
+          <HeaderAnimation /> 
+            <Navigation/>
+            
         </header>
-        <UsernameInput />
-        <UserRepositories username={getUserName} />
-        
-      </div>
+      <Routes>
+        <Route path= "/home" element={<Home/>}/>
+        <Route exact path="/app" element={
+        <>
+          <UsernameInput />
+          <UserRepositories username={getUserName}/>
+        </>
+      } />
+      </Routes>
+      </BrowserRouter>
     );
   
 }
