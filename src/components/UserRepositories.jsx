@@ -26,7 +26,7 @@ useEffect(() => {
   }else{
     return (
       <div className="parentDiv">
-        <h1>{username}'s Repositories</h1>
+        <h1>{username}</h1>
         <div className="repo-card">
           <Row xs={1} sm={2} md={3}>
             {Array.isArray(repositories) && repositories.map((repository) => (

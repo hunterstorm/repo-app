@@ -19,7 +19,7 @@ function App() {
             
         </header>
       <Routes>
-        <Route path= "/home" element={<Home/>}/>
+        <Route path= "/" element={<Home/>}/>
         <Route exact path="/app" element={
         <>
           <UsernameInput />
