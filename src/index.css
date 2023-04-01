@@ -13,6 +13,19 @@ code {
 }
 
 .greeting{
-color: white;
+color: rgb(0, 0, 0);
 text-align: center;
+width: 300px;
+border: 15px solid rgb(38, 157, 196);
+padding: 20px 0;
+margin: auto
+}
+
+.text{
+text-align: center
+
+}
+
+.navbar{
+float: right;
 }
